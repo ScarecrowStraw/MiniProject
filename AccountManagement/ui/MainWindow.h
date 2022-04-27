@@ -8,6 +8,7 @@
 #include "QLoginWidget.h"
 #include "QHomeWidget.h"
 #include "AMModel.h"
+#include <QStackedWidget>
 
 namespace Ui{
     class MainWindow;
@@ -30,6 +31,7 @@ public:
     QCreateAccount* m_createAccountWidget;
     QLoginWidget* m_loginWidget;
     QHomeWidget* m_homeWidget;
+    QStackedWidget* m_stackedWidget;
 
 };
 #endif // MAINWINDOW_H

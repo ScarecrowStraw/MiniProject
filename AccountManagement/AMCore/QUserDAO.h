@@ -21,6 +21,8 @@ public:
     void removeUser(int id) const;
     QVector<QUser*> users() const;
 
+    bool checkUserPass(QUser &user) const;
+
 private:
     QSqlDatabase& m_database;
 };

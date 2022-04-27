@@ -7,18 +7,26 @@ MainWindow::MainWindow(QWidget *parent)
       ui(new Ui::MainWindow),
       m_createAccountWidget(new QCreateAccount()),
       m_loginWidget(new QLoginWidget()),
-      m_homeWidget(new QHomeWidget())
+      m_homeWidget(new QHomeWidget()),
+      m_stackedWidget(new QStackedWidget())
 {
     ui->setupUi(this);
 
-    setCentralWidget(m_loginWidget);
+    m_stackedWidget->addWidget(m_homeWidget);
+    m_stackedWidget->addWidget(m_loginWidget);
+    m_stackedWidget->addWidget(m_createAccountWidget);
+
+    m_stackedWidget->setCurrentWidget(m_loginWidget);
+
+    setCentralWidget(m_stackedWidget);
 
     connect(m_loginWidget, &QLoginWidget::createButtonClicked, this, [this] {
-            setCentralWidget(m_createAccountWidget);
+            m_stackedWidget->setCurrentWidget(m_createAccountWidget);
     });
 
-    connect(m_createAccountWidget, &QWidget::destroyed, this, [this] {
-            setCentralWidget(m_loginWidget);
+    connect(m_createAccountWidget, &QCreateAccount::closeWidget, this, [this] {
+            qDebug() << "Something here";
+            m_stackedWidget->setCurrentWidget(m_loginWidget);
     });
 }
 

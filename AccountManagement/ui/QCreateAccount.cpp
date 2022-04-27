@@ -13,6 +13,11 @@ QCreateAccount::QCreateAccount(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->createButton, &QPushButton::clicked, this, &QCreateAccount::createUser);
+    connect(ui->closeButton, &QPushButton::clicked, this, [this] {
+        emit closeWidget();
+
+        this->close();
+    });
 
 }
 
@@ -38,8 +43,6 @@ void QCreateAccount::createUser()
         QMessageBox msgBox;
         msgBox.setText("Create user successed");
         msgBox.exec();
-
-        this->close();
     }
     else
     {

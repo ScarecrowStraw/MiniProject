@@ -18,7 +18,7 @@ public:
     ~QCreateAccount();
 
 signals:
-    void closed();
+    void closeWidget();
 
 public slots:
     void createUser();

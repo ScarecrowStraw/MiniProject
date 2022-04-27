@@ -75,3 +75,8 @@ bool QUserDAO::isUserExits(QUser &user) const
     }
     return false;
 }
+
+bool QUserDAO::checkUserPass(QUser &user) const
+{
+    // soemthing here
+}
