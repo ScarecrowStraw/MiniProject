@@ -24,14 +24,16 @@ void AMModel::signOut()
     m_currentUser = nullptr;
 }
 
-void AMModel::addUser(QUser &user)
+bool AMModel::addUser(QUser &user)
 {
     bool result = m_dbManager.userDao.addUser(user);
 
     if(result){
         qDebug() << "Add successed";
+        return true;
     }
     else{
         qDebug() << "User exited";
+        return false;
     }
 }

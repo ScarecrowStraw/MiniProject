@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <memory>
+
+#include "QCreateAccount.h"
+#include "QLoginWidget.h"
+#include "QHomeWidget.h"
 #include "AMModel.h"
 
 namespace Ui{
@@ -18,15 +22,14 @@ public:
     ~MainWindow();
 
 signals:
-    void something(QString name);
 
 public slots:
-    void getLogindata();
-    void printSomething(QString name);
-
 
 public:
-    AMModel *m_model;
     Ui::MainWindow *ui;
+    QCreateAccount* m_createAccountWidget;
+    QLoginWidget* m_loginWidget;
+    QHomeWidget* m_homeWidget;
+
 };
 #endif // MAINWINDOW_H

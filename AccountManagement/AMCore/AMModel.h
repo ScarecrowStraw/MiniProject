@@ -16,7 +16,7 @@ public:
     void login(const QUser& user);
     void signOut();
 
-    void addUser(QUser& user);
+    bool addUser(QUser& user);
 
 signals:
 

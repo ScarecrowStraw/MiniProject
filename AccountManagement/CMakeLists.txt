@@ -16,11 +16,12 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Sql Core REQUIRED)
 
 add_subdirectory(AMCore)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/AMCore)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/AMCore
+                    ${CMAKE_CURRENT_SOURCE_DIR}/ui)
 
-set(project_sources MainWindow.cpp main.cpp)
-set(project_headers MainWindow.h)
-set(project_ui mainwindow.ui)
+set(project_sources ui/MainWindow.cpp ui/QCreateAccount.cpp ui/QLoginWidget.cpp ui/QHomeWidget.cpp main.cpp)
+set(project_headers ui/MainWindow.h ui/QCreateAccount.h ui/QLoginWidget.h ui/QHomeWidget.h)
+set(project_ui ui/mainwindow.ui ui/qcreateaccount.ui ui/qloginwidget.ui ui/qhomewidget.ui)
 
 # wrap the ui file to a c++ header
 qt5_wrap_ui(ui_wrap ${project_ui})
