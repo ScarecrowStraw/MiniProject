@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::getLogindata);
-
 }
 
 MainWindow::~MainWindow()

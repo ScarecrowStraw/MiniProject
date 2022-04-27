@@ -17,9 +17,9 @@ void AMModel::login( QUser &user)
 
     if(checkdone){
         qDebug()<< "check done";
-//        m_currentUser->setName(user.name());
-//        m_currentUser->setPass(user.pass());
-//        m_currentUser->setFullName(user.fullName());
+        m_currentUser->setName(user.name());
+        m_currentUser->setPass(user.pass());
+        m_currentUser->setFullName(user.fullName());
     }
     else {
         qDebug()<<"fail";

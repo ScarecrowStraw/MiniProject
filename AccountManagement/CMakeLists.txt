@@ -18,9 +18,9 @@ add_subdirectory(AMCore)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/AMCore)
 
-set(project_sources MainWindow.cpp main.cpp )
-set(project_headers MainWindow.h )
-set(project_ui mainwindow.ui )
+set(project_sources MainWindow.cpp main.cpp)
+set(project_headers MainWindow.h)
+set(project_ui mainwindow.ui)
 
 # wrap the ui file to a c++ header
 qt5_wrap_ui(ui_wrap ${project_ui})
