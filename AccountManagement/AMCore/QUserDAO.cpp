@@ -30,20 +30,48 @@ void QUserDAO::init() const
     }
 }
 
-void QUserDAO::addUser(QUser& user) const
+bool QUserDAO::addUser(QUser& user) const
 {
     // TODO: Check exited user
-    QSqlQuery query(m_database);
-    query.prepare("INSERT INTO users (name, pass, fullName) VALUES (:name, :pass, :fullName)");
 
-    qDebug() << user.name();
-    qDebug() << user.pass();
-    qDebug() << user.fullName();
+    if (!isUserExits(user))
+    {
+        QSqlQuery query(m_database);
+        query.prepare("INSERT INTO users (name, pass, fullName) VALUES (:name, :pass, :fullName)");
+
+        qDebug() << user.name();
+        qDebug() << user.pass();
+        qDebug() << user.fullName();
+
+        query.bindValue(":name", user.name());
+        query.bindValue(":pass", user.pass());
+        query.bindValue(":fullName", user.fullName());
+
+        query.exec();
+        user.setId(query.lastInsertId().toInt());
+
+        QDatabaseManager::debugQuery(query);
+
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool QUserDAO::isUserExits(QUser &user) const
+{
+    QSqlQuery query(m_database);
+    query.prepare("SELECT * FROM users WHERE name = :name");
 
     query.bindValue(":name", user.name());
-    query.bindValue(":pass", user.pass());
-    query.bindValue(":fullName", user.fullName());
 
     query.exec();
-    user.setId(query.lastInsertId().toInt());
+
+    QDatabaseManager::debugQuery(query);
+
+    if(query.first()){
+        return true;
+    }
+    return false;
 }

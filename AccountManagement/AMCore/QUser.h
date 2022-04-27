@@ -9,7 +9,9 @@
 class QUser
 {
 public:
+    explicit QUser();
     QUser(QString name, QString pass, QString fullName);
+    QUser(QString name, QString pass);
 
     ~QUser();
 

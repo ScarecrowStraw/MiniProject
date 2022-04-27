@@ -1,9 +1,19 @@
 #include "QUser.h"
 
+QUser::QUser()
+{
+}
+
 QUser::QUser(QString name, QString pass, QString fullName)
     : m_name(name),
       m_pass(pass),
       m_fullName(fullName)
+{
+}
+
+QUser::QUser(QString name, QString pass)
+    : m_name(name),
+      m_pass(pass)
 {
 }
 

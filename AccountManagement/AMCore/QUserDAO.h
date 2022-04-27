@@ -13,7 +13,8 @@ public:
     QUserDAO(QSqlDatabase& database);
     void init() const;
 
-    void addUser(QUser& user) const;
+    bool addUser(QUser& user) const;
+    bool isUserExits(QUser& user) const;
 
     //TODO: Add CRUD function
     void updateUser(const QUser& user) const;

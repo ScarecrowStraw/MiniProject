@@ -11,8 +11,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
-    QUser u("blalo", "123456", "SuperMan");
-
+    QUser u("test", "123456", "SuperMan");
     w.m_model->addUser(u);
 
     w.show();
