@@ -23,6 +23,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_loginWidget, &QLoginWidget::createButtonClicked, this, [this] {
             m_stackedWidget->setCurrentWidget(m_createAccountWidget);
     });
+    connect(m_loginWidget, &QLoginWidget::loginSuccess, this, [this] {
+            m_stackedWidget->setCurrentWidget(m_homeWidget);
+    });
+    connect(m_loginWidget, &QLoginWidget::loginFail, this, [this] {
+            m_stackedWidget->setCurrentWidget(m_homeWidget);
+    });
 
     connect(m_createAccountWidget, &QCreateAccount::closeWidget, this, [this] {
             qDebug() << "Something here";
