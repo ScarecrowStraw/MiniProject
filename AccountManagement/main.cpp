@@ -1,7 +1,6 @@
-#include "MainWindow.h"
 #include "QUser.h"
 #include "QDatabaseManager.h"
-#include "QUserDAO.h"
+#include "AMModel.h"
 
 #include <QApplication>
 #include <QString>
@@ -10,22 +9,12 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
 
-    QSqlDatabase* db = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
+    AMModel* model;
 
-    db->setDatabaseName(DATABASE_FILENAME);
-    db->open();
+    QUser u("king", "123456", "SuperMan");
 
-    QUserDAO dao(*db);
-
-    dao.init();
-
-    QUser u("lacie", "123456", "SuperMan");
-
-
-    dao.addUser(u);
+    model->addUser(u);
 
     return a.exec();
 }

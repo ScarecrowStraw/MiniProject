@@ -21,8 +21,8 @@ public:
     static void debugQuery(const QSqlQuery& query);
 
     QDatabaseManager(const QString& path = DATABASE_FILENAME);
-    static QDatabaseManager& instance();
 
+    static QDatabaseManager& instance();
     ~QDatabaseManager();
 
 protected:

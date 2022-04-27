@@ -1,4 +1,5 @@
 #include "QDatabaseManager.h"
+
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QVariant>
@@ -18,6 +19,7 @@ void QDatabaseManager::debugQuery(const QSqlQuery& query)
 QDatabaseManager& QDatabaseManager::instance()
 {
     static QDatabaseManager instance;
+    qDebug() << "QDatabaseManager Init";
     return instance;
 }
 
@@ -26,7 +28,9 @@ QDatabaseManager::QDatabaseManager(const QString& path)
       userDao(*m_database)
 {
     m_database->setDatabaseName(path);
-    m_database->open();
+
+    bool openStatus = m_database->open();
+    qDebug() << "Database connection: " << (openStatus ? "OK" : "Error");
 
     userDao.init();
 }

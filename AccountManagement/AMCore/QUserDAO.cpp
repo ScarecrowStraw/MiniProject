@@ -32,6 +32,7 @@ void QUserDAO::init() const
 
 void QUserDAO::addUser(QUser &user) const
 {
+    // TODO: Check exited user
     QSqlQuery query(m_database);
     query.prepare("INSERT INTO users (name, pass, fullName) VALUES (:name, :pass, :fullName)");
 
