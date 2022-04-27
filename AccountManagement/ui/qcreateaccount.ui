@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>QCreateAccount</class>
  <widget class="QWidget" name="QCreateAccount">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>506</width>
-    <height>398</height>
+    <width>500</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
