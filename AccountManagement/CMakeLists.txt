@@ -60,3 +60,6 @@ set_target_properties(AccountManagement PROPERTIES
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(AccountManagement)
 endif()
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

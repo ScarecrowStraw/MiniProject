@@ -11,7 +11,7 @@ class QSqlDatabase;
 class QSqlQuery;
 
 
-const QString DATABASE_FILENAME = "user.db";
+const QString DATABASE_FILENAME = "data/user.db";
 
 class QDatabaseManager : public QObject
 {

@@ -15,12 +15,15 @@ int main(int argc, char *argv[])
 
     QSqlDatabase* db = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
 
-    db->setDatabaseName("user.db");
+    db->setDatabaseName(DATABASE_FILENAME);
     db->open();
 
     QUserDAO dao(*db);
 
-    QUser u("life", "123456", "SuperMan");
+    dao.init();
+
+    QUser u("lacie", "123456", "SuperMan");
+
 
     dao.addUser(u);
 

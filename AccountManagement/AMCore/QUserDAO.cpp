@@ -33,7 +33,11 @@ void QUserDAO::init() const
 void QUserDAO::addUser(QUser &user) const
 {
     QSqlQuery query(m_database);
-    query.prepare("INSERT INTO albums (name, pass, fullName) VALUES (:name, :pass, :fullName)");
+    query.prepare("INSERT INTO users (name, pass, fullName) VALUES (:name, :pass, :fullName)");
+
+    qDebug() << user.name();
+    qDebug() << user.pass();
+    qDebug() << user.fullName();
 
     query.bindValue(":name", user.name());
     query.bindValue(":pass", user.pass());
