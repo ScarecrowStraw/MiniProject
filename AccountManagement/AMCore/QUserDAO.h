@@ -15,7 +15,7 @@ public:
 
     bool addUser(QUser& user) const;
     bool isUserExits(QUser& user) const;
-
+    bool isloginUserExits(QUser& user) const;
     //TODO: Add CRUD function
     void updateUser(const QUser& user) const;
     void removeUser(int id) const;

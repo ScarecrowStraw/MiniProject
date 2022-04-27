@@ -18,11 +18,10 @@ public:
     ~MainWindow();
 
 signals:
-    void something(QString name);
+    void loginsignals(QUser userlogin);
 
 public slots:
     void getLogindata();
-    void printSomething(QString name);
 
 
 public:

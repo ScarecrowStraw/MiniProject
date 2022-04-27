@@ -13,7 +13,7 @@ class AMModel : public QObject
 public:
     explicit AMModel(QObject *parent = nullptr);
 
-    void login(const QUser& user);
+    void login(QUser& user);
     void signOut();
 
     void addUser(QUser& user);

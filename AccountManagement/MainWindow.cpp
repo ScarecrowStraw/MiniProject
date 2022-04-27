@@ -1,7 +1,6 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow)
@@ -11,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::getLogindata);
-    connect(this, &MainWindow::something, this, &MainWindow::printSomething);
+
 }
 
 MainWindow::~MainWindow()
@@ -20,14 +19,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::getLogindata()
 {
-    QString name = ui->Name->toPlainText();
-    qDebug() << name;
-
-    emit something(name);
+    QString usrname = ui->username->toPlainText();
+    QString usrpass = ui->lineEdit->text();
+    QUser usrlogin;
+    usrlogin.setName(usrname);
+    usrlogin.setPass(usrpass);
+    m_model->login(usrlogin);
+    qDebug()<< usrlogin.name();
 }
 
-void MainWindow::printSomething(QString name)
-{
-    qDebug() << name;
-}
 

@@ -75,3 +75,26 @@ bool QUserDAO::isUserExits(QUser &user) const
     }
     return false;
 }
+
+bool QUserDAO::isloginUserExits(QUser &user) const
+{
+    QSqlQuery query(m_database);
+    query.prepare("SELECT * FROM users WHERE name = :name");
+
+    query.bindValue(":name", user.name());
+
+    query.exec();
+
+    QDatabaseManager::debugQuery(query);
+
+    if(query.first()){
+        if(query.value("pass").toString()==user.pass()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+            }
+}
+

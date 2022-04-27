@@ -11,12 +11,19 @@ AMModel::AMModel(QObject *parent)
     qDebug() << "AMModel Init";
 }
 
-void AMModel::login(const QUser &user)
+void AMModel::login( QUser &user)
 {
-    // TODO: Check user in database
-    m_currentUser->setName(user.name());
-    m_currentUser->setPass(user.pass());
-    m_currentUser->setFullName(user.fullName());
+    bool checkdone = m_dbManager.userDao.isloginUserExits(user);
+
+    if(checkdone){
+        qDebug()<< "check done";
+//        m_currentUser->setName(user.name());
+//        m_currentUser->setPass(user.pass());
+//        m_currentUser->setFullName(user.fullName());
+    }
+    else {
+        qDebug()<<"fail";
+    }
 }
 
 void AMModel::signOut()
