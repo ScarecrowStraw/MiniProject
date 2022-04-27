@@ -6,12 +6,9 @@
 
 //TODO: Encode password before add to database
 
-class QUser : public QObject
+class QUser
 {
-    Q_OBJECT
-
 public:
-    QUser(QObject *parent = nullptr);
     QUser(QString name, QString pass, QString fullName);
 
     ~QUser();

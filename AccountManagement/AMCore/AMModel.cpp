@@ -1,13 +1,14 @@
 #include "AMModel.h"
 #include "QUser.h"
 
+#include <QDebug>
+
 AMModel::AMModel(QObject *parent)
     : QObject{parent},
       m_dbManager(QDatabaseManager::instance()),
       m_currentUser(nullptr)
 {
-    QUser u("Test", "123456", "SuperMan");
-    m_dbManager.userDao.addUser(u);
+    qDebug() << "AMModel Init";
 }
 
 void AMModel::login(const QUser &user)

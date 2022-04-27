@@ -1,6 +1,6 @@
+#include "MainWindow.h"
 #include "QUser.h"
 #include "QDatabaseManager.h"
-#include "AMModel.h"
 
 #include <QApplication>
 #include <QString>
@@ -9,12 +9,13 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
-    AMModel* model;
+    MainWindow w;
 
     QUser u("king", "123456", "SuperMan");
 
-    model->addUser(u);
+    w.m_model->addUser(u);
+
+    w.show();
 
     return a.exec();
 }

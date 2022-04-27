@@ -6,9 +6,9 @@
 class QSqlDatabase;
 class QUser;
 
-class QUserDAO : public QObject
+class QUserDAO
 {
-    Q_OBJECT
+
 public:
     QUserDAO(QSqlDatabase& database);
     void init() const;

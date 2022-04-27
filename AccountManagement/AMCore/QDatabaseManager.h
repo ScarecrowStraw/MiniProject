@@ -13,9 +13,8 @@ class QSqlQuery;
 
 const QString DATABASE_FILENAME = "data/user.db";
 
-class QDatabaseManager : public QObject
+class QDatabaseManager
 {
-    Q_OBJECT
 
 public:
     static void debugQuery(const QSqlQuery& query);
@@ -32,7 +31,7 @@ public:
     const QUserDAO userDao;
 
 private:
-    std::unique_ptr<QSqlDatabase> m_database;
+    static QSqlDatabase* m_database;
 };
 
 #endif // QDATABASEMANAGER_H

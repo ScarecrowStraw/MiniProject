@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QSqlError>
 
+QSqlDatabase* QDatabaseManager::m_database = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
+
 void QDatabaseManager::debugQuery(const QSqlQuery& query)
 {
     if (query.lastError().type() == QSqlError::ErrorType::NoError) {
@@ -24,8 +26,7 @@ QDatabaseManager& QDatabaseManager::instance()
 }
 
 QDatabaseManager::QDatabaseManager(const QString& path)
-    : m_database(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),
-      userDao(*m_database)
+    : userDao(*m_database)
 {
     m_database->setDatabaseName(path);
 

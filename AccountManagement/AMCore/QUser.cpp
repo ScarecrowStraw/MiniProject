@@ -1,11 +1,5 @@
 #include "QUser.h"
 
-QUser::QUser(QObject *parent)
-    : QObject{parent}
-{
-
-}
-
 QUser::QUser(QString name, QString pass, QString fullName)
     : m_name(name),
       m_pass(pass),
