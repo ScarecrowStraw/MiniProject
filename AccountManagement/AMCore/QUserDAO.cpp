@@ -30,7 +30,7 @@ void QUserDAO::init() const
     }
 }
 
-void QUserDAO::addUser(QUser &user) const
+void QUserDAO::addUser(QUser& user) const
 {
     // TODO: Check exited user
     QSqlQuery query(m_database);

@@ -11,18 +11,20 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Sql REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Sql REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Sql Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Sql Core REQUIRED)
 
 add_subdirectory(AMCore)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/AMCore)
 
-set(PROJECT_SOURCES
-        main.cpp
-        MainWindow.cpp
-        MainWindow.h
-)
+set(project_sources MainWindow.cpp main.cpp)
+set(project_headers MainWindow.h)
+set(project_ui mainwindow.ui)
+
+# wrap the ui file to a c++ header
+qt5_wrap_ui(ui_wrap ${project_ui})
+qt5_wrap_cpp(moc_sources ${project_headers})
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(AccountManagement
@@ -36,18 +38,24 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 else()
     if(ANDROID)
         add_library(AccountManagement SHARED
-            ${PROJECT_SOURCES}
+            ${project_sources}
+            ${project_headers}
+            ${ui_wrap}
+            ${moc_sources}
         )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(AccountManagement
-            ${PROJECT_SOURCES}
-        )
-    endif()
+    # Define properties for Android with Qt 5 after find_package() calls as:
+    #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+else()
+    add_executable(AccountManagement
+        ${project_sources}
+        ${project_headers}
+        ${ui_wrap}
+        ${moc_sources}
+    )
+endif()
 endif()
 
-target_link_libraries(AccountManagement PRIVATE Qt${QT_VERSION_MAJOR}::Widgets amcore)
+target_link_libraries(AccountManagement PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Core amcore)
 
 set_target_properties(AccountManagement PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
