@@ -21,7 +21,7 @@ public:
     void removeUser(int id) const;
     QVector<QUser*> users() const;
 
-    bool isloginUserExits(QUser &user) const;
+    bool isloginUserExits(QUser& user) const;
 
 private:
     QSqlDatabase& m_database;

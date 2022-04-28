@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    m_model = new AMModel();
+
     m_stackedWidget->addWidget(m_homeWidget);
     m_stackedWidget->addWidget(m_loginWidget);
     m_stackedWidget->addWidget(m_createAccountWidget);
@@ -23,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_loginWidget, &QLoginWidget::createButtonClicked, this, [this] {
             m_stackedWidget->setCurrentWidget(m_createAccountWidget);
     });
+    connect(m_loginWidget, &QLoginWidget::LoginUserInit, m_homeWidget, &QHomeWidget::setTextHello);
     connect(m_loginWidget, &QLoginWidget::loginSuccess, this, [this] {
             m_stackedWidget->setCurrentWidget(m_homeWidget);
     });

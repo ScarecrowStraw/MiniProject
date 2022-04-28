@@ -14,7 +14,7 @@ class QCreateAccount : public QWidget
     Q_OBJECT
 
 public:
-    explicit QCreateAccount(QWidget *parent = nullptr);
+    explicit QCreateAccount(QWidget *parent = nullptr, AMModel *model = nullptr);
     ~QCreateAccount();
 
 signals:

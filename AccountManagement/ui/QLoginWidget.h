@@ -16,11 +16,11 @@ signals:
     void createButtonClicked();
     void loginSuccess();
     void loginFail();
-
+    void LoginUserInit();
 public slots:
     void getLogindata();
 public:
-    explicit QLoginWidget(QWidget *parent = nullptr);
+    explicit QLoginWidget(QWidget *parent = nullptr, AMModel* model = nullptr);
     ~QLoginWidget();
 
 private:

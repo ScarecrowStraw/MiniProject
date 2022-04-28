@@ -28,6 +28,7 @@ public slots:
 
 public:
     Ui::MainWindow *ui;
+    AMModel* m_model;
     QCreateAccount* m_createAccountWidget;
     QLoginWidget* m_loginWidget;
     QHomeWidget* m_homeWidget;

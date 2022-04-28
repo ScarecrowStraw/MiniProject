@@ -4,11 +4,11 @@
 #include <QDebug>
 #include <QMessageBox>
 
-QCreateAccount::QCreateAccount(QWidget *parent) :
+QCreateAccount::QCreateAccount(QWidget *parent, AMModel *model) :
     QWidget(parent),
     ui(new Ui::QCreateAccount)
 {
-    m_model = new AMModel();
+    m_model = model;
 
     ui->setupUi(this);
 
@@ -29,7 +29,7 @@ QCreateAccount::~QCreateAccount()
 void QCreateAccount::createUser()
 {
     QString name = ui->nameInput->toPlainText();
-    QString pass = ui->passInput->toPlainText();
+    QString pass = ui->passInput->text();
     QString fullName = ui->fullNameInput->toPlainText();
 
     QUser u(name, pass, fullName);

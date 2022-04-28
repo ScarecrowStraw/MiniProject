@@ -4,13 +4,13 @@
 
 #include <QDebug>
 
-QLoginWidget::QLoginWidget(QWidget *parent) :
+QLoginWidget::QLoginWidget(QWidget *parent, AMModel *model) :
     QWidget(parent),
     ui(new Ui::QLoginWidget)
 {
     ui->setupUi(this);
 
-    m_model = new AMModel();
+   m_model = model;
 
     connect(ui->createButton, &QPushButton::clicked, this, [this] {
         emit createButtonClicked();
@@ -36,9 +36,10 @@ void QLoginWidget::getLogindata()
     if(checker){
         qDebug()<<"okela";
         emit loginSuccess();
+        emit LoginUserInit();
     }
     else{
         emit loginFail();
     }
-    qDebug()<< usrlogin.name();
+    qDebug()<< usrlogin.fullName();
 }

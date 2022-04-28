@@ -15,12 +15,13 @@ bool AMModel::login( QUser &user)
 {
     bool checkdone = m_dbManager.userDao.isloginUserExits(user);
 
-    if(checkdone){
+    m_currentUser = new QUser(user.name(), user.pass());
 
-//        m_currentUser->setName(user.name());
-//        m_currentUser->setPass(user.pass());
-//        m_currentUser->setFullName(user.fullName());
-        qDebug()<< "check done";
+    if(checkdone){
+        m_currentUser->setFullName(user.fullName());
+
+        qDebug()<< m_currentUser->fullName();
+
         return true;
     }
     else {

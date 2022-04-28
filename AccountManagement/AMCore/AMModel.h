@@ -18,11 +18,14 @@ public:
 
     bool addUser(QUser& user);
 
+    QUser* m_currentUser;
+
 signals:
 
 private:
     QDatabaseManager& m_dbManager;
-    std::unique_ptr<QUser> m_currentUser;
+
+
 };
 
 #endif // AMMODEL_H

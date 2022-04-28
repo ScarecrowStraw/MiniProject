@@ -45,16 +45,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="passInput">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>180</y>
-     <width>251</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPlainTextEdit" name="fullNameInput">
    <property name="geometry">
     <rect>
@@ -128,6 +118,19 @@
    </property>
    <property name="text">
     <string>Close</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passInput">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>180</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
    </property>
   </widget>
  </widget>

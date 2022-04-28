@@ -89,6 +89,12 @@ bool QUserDAO::isloginUserExits(QUser &user) const
 
     if(query.first()){
         if(query.value("pass").toString()==user.pass()){
+
+            user.setId(query.value("id").toString().toInt());
+            user.setFullName(query.value("fullName").toString());
+            qDebug() <<"checkkkkkkkk";
+          // qDebug() << query.value("fullName").toString();
+
             return true;
         }
         else{
