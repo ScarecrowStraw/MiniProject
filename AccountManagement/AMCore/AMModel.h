@@ -18,11 +18,13 @@ public:
 
     bool addUser(QUser& user);
 
-    QUser* m_currentUser;
+    QString getUserFullName();
+
 
 signals:
 
 private:
+    QUser* m_currentUser;
     QDatabaseManager& m_dbManager;
 
 

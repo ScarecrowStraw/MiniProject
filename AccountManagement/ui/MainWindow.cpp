@@ -4,15 +4,16 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
-      ui(new Ui::MainWindow),
-      m_createAccountWidget(new QCreateAccount()),
-      m_loginWidget(new QLoginWidget()),
-      m_homeWidget(new QHomeWidget()),
-      m_stackedWidget(new QStackedWidget())
+      ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     m_model = new AMModel();
+
+    m_createAccountWidget = new QCreateAccount(nullptr, m_model);
+    m_loginWidget = new QLoginWidget(nullptr, m_model);
+    m_homeWidget = new QHomeWidget(nullptr, m_model);
+    m_stackedWidget = new QStackedWidget();
 
     m_stackedWidget->addWidget(m_homeWidget);
     m_stackedWidget->addWidget(m_loginWidget);

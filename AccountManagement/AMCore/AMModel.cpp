@@ -48,3 +48,8 @@ bool AMModel::addUser(QUser &user)
         return false;
     }
 }
+
+QString AMModel::getUserFullName()
+{
+    return m_currentUser->fullName();
+}

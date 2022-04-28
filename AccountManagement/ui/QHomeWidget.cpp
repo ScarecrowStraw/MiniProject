@@ -17,5 +17,5 @@ QHomeWidget::~QHomeWidget()
 
 void QHomeWidget::setTextHello()
 {
-   // ui->helloUser->setText("Hello " + m_model->m_currentUser->fullName());
+   ui->helloUser->setText("Hello " + m_model->getUserFullName());
 }
